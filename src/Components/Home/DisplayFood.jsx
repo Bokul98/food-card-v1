@@ -79,7 +79,7 @@ const DisplayFood = () => {
             </h3>
             <p className="text-primary font-bold mb-2">${item.price}</p>
             <p className="text-gray-500 text-sm text-center mb-4">
-              {item.desc}
+              {item.description}
             </p>
             <a
               href={`/dishDetails/${item?._id}`}

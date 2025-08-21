@@ -2,6 +2,8 @@ import clientPromise from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 
+
+
 export async function POST(request) {
   try {
     const session = await getServerSession();
@@ -31,6 +33,7 @@ export async function POST(request) {
       price,
       description,
       image,
+      isPopular: data.isPopular || false,
       createdAt: new Date(),
       createdBy: session.user.email,
     });
@@ -53,14 +56,20 @@ export async function GET(request) {
     const client = await clientPromise;
     const db = client.db("foodCartUser");
     const menuCollection = db.collection("allMenu");
-    // Use the URL object to get query parameters
+    
     const { searchParams } = new URL(request.url);
     const display = searchParams.get("display"); 
+    
     let query = {};
-    if (display) {
-      query = { display: display };
+    if (display === 'populer') {
+      query = { isPopular: true };
+    } else if (display === 'regular') {
+      query = { isPopular: { $ne: true } };
     }
+    
     const menu = await menuCollection.find(query).toArray();
+    console.log('Query:', query);
+    console.log('Found items:', menu.length);
     return NextResponse.json(menu);
   } catch (e) {
     console.error(e);
