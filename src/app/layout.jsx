@@ -3,6 +3,7 @@ import "./globals.css";
 import { Open_Sans } from 'next/font/google';
 import Navbar from "@/Components/Navbar/Navbar";
 import AuthProvider from "./AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="w-full min-h-[calc(100vh-100px)]">{children}</main>
           <Footer />
+          <Toaster position="top-center" reverseOrder={false} />
         </AuthProvider>
       </body>
     </html>
