@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -17,7 +19,9 @@ export default function RegisterPage() {
       setError("All fields are necessary.");
       return;
     }
+
     try {
+      setLoading(true);
       const res = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -25,16 +29,30 @@ export default function RegisterPage() {
         },
         body: JSON.stringify({ name, email, password }),
       });
+
       if (res.ok) {
-        const form = e.target;
-        form.reset();
-        router.push("/login");
+        // If registration is successful, immediately sign in
+        const result = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        });
+
+        if (result?.error) {
+          setError("Error during auto-login. Please try logging in manually.");
+        } else {
+          // Registration and auto-login successful
+          router.push("/dashboard"); // or wherever you want to redirect after successful registration
+          router.refresh();
+        }
       } else {
         const data = await res.text();
         setError(data);
       }
     } catch (error) {
       setError("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
   };
 
