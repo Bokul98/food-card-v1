@@ -2,81 +2,83 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-16 py-32 bg-primary/5 rounded-2xl overflow-hidden max-w-7xl mx-auto">
-      {/* Left Content */}
-      <div className="z-10 flex-1 max-w-lg w-full flex flex-col items-start mt-10 md:mt-0">
-        <span className="px-6 py-1 mb-6 rounded-full bg-primary/10 text-primary font-bold text-sm tracking-widest uppercase shadow">
-          Fresh & Fast
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight">
-          Eat <span className="text-primary">Healthy</span>, <br />
-          Live <span className="text-primary">Happy</span>
-        </h1>
-        <p className="text-gray-600 mb-8 text-base md:text-lg">
-          Discover a world of delicious, nutritious meals delivered right to
-          your door. Enjoy freshness, speed, and taste in every bite!
-        </p>
-        <div className="flex gap-4 w-5/6 mx-auto md:w-full flex-col sm:flex-row">
-          <button className="bg-primary text-white font-semibold px-4 py-2 lg:px-8 lg:py-3 rounded-full text-base w-full sm:w-auto">
-            Get Started
-          </button>
-          <a
-            href={"/menu"}
-            className="border border-primary text-primary font-semibold px-4 py-2 lg:px-8 lg:py-3 rounded-full text-base w-full sm:w-auto"
-          >
-            View Menu
-          </a>
-        </div>
-      </div>
-      {/* Right Content */}
-      <div className="flex-1 flex justify-center items-center relative w-full z-10">
-        {/* Decorative Abstract Shape */}
-        <div className=" absolute -top-10 right-0 md:right-[-60px] w-80 h-80 bg-primary/20 rounded-full z-0"></div>
-        {/* Main Food Image */}
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <img
-          src="https://i.ibb.co/bMTLNNk4/spencer-davis-5ds-Zn-CVDHd0-unsplash.jpg"
-          alt="Food"
-          // We must provide explicit width and height for Image
-          width={400}
-          height={400}
-          className="relative z-10 w-64 h-64 md:w-96 md:h-96 object-cover rounded-full border-8 border-white shadow-2xl"
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          alt="Delicious Food Background"
+          className="w-full h-full object-cover"
         />
-        {/* Decorative Small Dishes - using 'unoptimized' for small external images */}
-        <div className="absolute z-20 w-full h-full pointer-events-none">
-          <img
-            src="https://i.ibb.co/Kz5Jjsfq/pexels-bemistermister-3434523.jpg"
-            alt="dish"
-            width={56}
-            height={56}
-            className="absolute left-2 top-8 w-14 h-14 rounded-full border-2 border-primary bg-white shadow"
-            style={{ transform: "rotate(-10deg)" }}
-          />
-          <img
-            src="https://i.ibb.co/MXhPqVk/pexels-pixabay-461382.jpg"
-            alt="dish"
-            width={48}
-            height={48}
-            className="absolute left-10 bottom-10 w-12 h-12 rounded-full border-2 border-primary bg-white shadow"
-            style={{ transform: "rotate(8deg)" }}
-          />
-          <img
-            src="https://i.ibb.co/Cs3v2nd2/pexels-senuscape-728360-2313686.jpg"
-            alt="dish"
-            width={48}
-            height={48}
-            className="absolute right-8 top-4 w-12 h-12 rounded-full border-2 border-primary bg-white shadow"
-            style={{ transform: "rotate(15deg)" }}
-          />
-          <img
-            src="https://i.ibb.co/twmPJJ5m/pexels-xx-2151913460-32260165.jpg"
-            alt="dish"
-            width={56}
-            height={56}
-            className="absolute right-0 bottom-16 w-14 h-14 rounded-full border-2 border-primary bg-white shadow"
-            style={{ transform: "rotate(-5deg)" }}
-          />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-purple-900/60 to-blue-800/70"></div>
+      </div>
+
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-8 border border-white/30">
+            <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
+            Delicious Food Awaits You
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+            Explore Our{" "}
+            <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+              Food Paradise
+            </span>
+          </h1>
+
+          {/* Description */}
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Discover our mouth-watering selection of dishes prepared with the finest ingredients. From local favorites to international cuisine, we have something for every taste.
+          </p>
+
+          {/* Call to Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/all-products"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              View Menu
+              <svg
+                className="ml-2 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+            
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm border-2 border-white/30 rounded-full hover:bg-white/30 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-4 h-4 bg-white/30 rounded-full animate-bounce"></div>
+      <div className="absolute top-40 right-20 w-3 h-3 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+      <div className="absolute bottom-20 left-20 w-5 h-5 bg-white/20 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-40 right-10 w-3 h-3 bg-white/30 rounded-full animate-bounce" style={{ animationDelay: '1.5s' }}></div>
     </section>
   );
 };

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={`${openSans.className} bg-gray-50`}>
         <AuthProvider>
           <Navbar />
-          <main className="w-full min-h-[calc(100vh-100px)]">{children}</main>
+          <main className="w-full">{children}</main>
           <Footer />
           <Toaster position="top-center" reverseOrder={false} />
         </AuthProvider>
