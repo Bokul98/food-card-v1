@@ -10,7 +10,8 @@ export default function DashboardLayout({ children }) {
     <>
       {/* Hide main navbar */}
       <style jsx global>{`
-        .main-navbar {
+        nav.main-navbar,
+        footer {
           display: none !important;
         }
       `}</style>
@@ -28,26 +29,26 @@ export default function DashboardLayout({ children }) {
                 <X size={24} />
               </button>
             </div>
-            <nav className="flex-1 py-4">
+            <nav className="flex-1 py-4 space-y-1">
               <Link 
                 href="/dashboard" 
-                className="flex items-center px-4 py-3 hover:bg-gray-700 transition-colors duration-200"
+                className="flex items-center px-4 py-3 hover:bg-gray-700 transition-colors duration-200 rounded-lg mx-2"
                 onClick={() => setSidebarOpen(false)}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
-                Dashboard Home
+                <span className="text-sm font-medium">Dashboard Home</span>
               </Link>
               <Link 
                 href="/dashboard/add-food" 
-                className="flex items-center px-4 py-3 hover:bg-gray-700 transition-colors duration-200"
+                className="flex items-center px-4 py-3 hover:bg-gray-700 transition-colors duration-200 rounded-lg mx-2"
                 onClick={() => setSidebarOpen(false)}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                 </svg>
-                Add Food
+                <span className="text-sm font-medium">Add Food</span>
               </Link>
             </nav>
             <div className="border-t border-gray-700 p-4">
@@ -68,7 +69,7 @@ export default function DashboardLayout({ children }) {
         {/* Main Content */}
         <div className="flex-1">
           {/* Mobile Header */}
-          <div className="md:hidden bg-gray-800 text-white p-4 flex items-center justify-between sticky top-0 z-20">
+          <div className="md:hidden bg-gray-800 text-white p-4 flex items-center justify-between sticky top-0 z-20 dashboard-nav">
             <h1 className="text-xl font-bold">Product App</h1>
             <button 
               onClick={() => setSidebarOpen(true)} 
