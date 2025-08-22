@@ -6,8 +6,8 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Store Background"
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          alt="Delicious Food Background"
           className="w-full h-full object-cover"
         />
         {/* Overlay */}
@@ -26,29 +26,29 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-8 border border-white/30">
             <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-            Welcome to Our Store
+            Delicious Food Awaits You
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-            Welcome to{" "}
+            Explore Our{" "}
             <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-              Our Store
+              Food Paradise
             </span>
           </h1>
 
           {/* Description */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Find the best products at unbeatable prices. Discover amazing deals and quality items that will exceed your expectations.
+            Discover our mouth-watering selection of dishes prepared with the finest ingredients. From local favorites to international cuisine, we have something for every taste.
           </p>
 
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/products"
+              href="/all-products"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              View Products
+              View Menu
               <svg
                 className="ml-2 w-5 h-5"
                 fill="none"
