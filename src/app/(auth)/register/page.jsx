@@ -42,7 +42,7 @@ export default function RegisterPage() {
           setError("Error during auto-login. Please try logging in manually.");
         } else {
           // Registration and auto-login successful
-          router.push("/dashboard"); // or wherever you want to redirect after successful registration
+          router.push("/all-products"); // or wherever you want to redirect after successful registration
           router.refresh();
         }
       } else {
