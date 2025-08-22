@@ -11,35 +11,47 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      setError("Please fill in all fields");
+      return;
+    }
+    
+    setError("");
+    setIsLoading(true);
+    
     try {
-      const searchParams = new URLSearchParams(window.location.search);
-      const callbackUrl = searchParams.get("callbackUrl") || "/all-products";
-
       const res = await signIn("credentials", {
-        email,
+        email: email.toLowerCase(),
         password,
         redirect: false,
       });
-      
-      if (res.error) {
-        setError("Invalid credentials");
+
+      if (!res?.ok) {
+        setError(res?.error || "Invalid email or password");
+        setIsLoading(false);
         return;
       }
 
-      router.replace(callbackUrl);
+      router.refresh();
+      router.replace("/all-products");
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
+      setError("An error occurred during login. Please try again.");
+      setIsLoading(false);
     }
   };
 
   // Google login handler
   const handleGoogleLogin = async () => {
     try {
-      const searchParams = new URLSearchParams(window.location.search);
-      const callbackUrl = searchParams.get("callbackUrl") || "/all-products";
-      await signIn("google", { callbackUrl });
+      await signIn("google", { 
+        callbackUrl: "/all-products",
+        redirect: true
+      });
     } catch (error) {
       console.log(error);
     }
@@ -60,6 +72,11 @@ export default function LoginPage() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          {error && (
+            <div className="p-3 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200">
+              {error}
+            </div>
+          )}
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="text-sm font-medium text-gray-700 block mb-2">

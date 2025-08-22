@@ -1,5 +1,6 @@
 import Footer from "@/Components/Footer/Footer";
 import "./globals.css";
+import "../app.css";
 import { Open_Sans } from 'next/font/google';
 import Navbar from "@/Components/Navbar/Navbar";
 import AuthProvider from "./AuthProvider";
