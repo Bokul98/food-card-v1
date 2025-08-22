@@ -2,8 +2,6 @@
 
 A modern, full-stack food ordering platform built with Next.js 14, featuring a beautiful UI, authentication, dashboard, and real-time order management.
 
-![Food Cart Preview](public/food-cart.png)
-
 ## 🌟 Features
 
 - **Modern UI/UX**: Clean and responsive design with Tailwind CSS
