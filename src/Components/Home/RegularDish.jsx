@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
-// the link is not avoilable in the client component
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
@@ -67,35 +66,43 @@ const RegularDish = () => {
         {dishes.map((dish, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center relative"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col items-center relative transition-all duration-300 transform hover:scale-105 border border-gray-100"
           >
             {/* Like Button */}
-            <button className="absolute top-4 right-4 text-primary bg-primary/10 rounded-full p-2">
-              <FaRegHeart className="text-lg" />
+            <button className="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
+              <FaRegHeart className="text-lg text-red-500 group-hover:text-red-600" />
             </button>
+            
             <img
               src={dish.image}
               alt={dish.name}
-              className="w-32 h-32 object-cover rounded-full mb-4 border-4 border-primary/20"
+              className="w-32 h-32 object-cover rounded-full mb-4 border-4 border-primary/20 shadow-lg"
             />
+            
             {/* Rating */}
-            <div className="flex items-center mb-2">
+            <div className="flex items-center mb-3 bg-yellow-50 px-3 py-1 rounded-full">
               <FaStar className="text-yellow-400 mr-1" />
               <span className="text-sm font-semibold text-gray-700">
                 {dish.rating}
               </span>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-1">
+            
+            <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
               {dish.name}
             </h3>
-            <p className="text-primary font-bold mb-2">{dish.price}</p>
-            <p className="text-gray-500 text-sm text-center mb-4">
+            
+            <p className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">
+              {dish.price}
+            </p>
+            
+            <p className="text-gray-600 text-sm text-center mb-6 leading-relaxed flex-1">
               {dish.desc}
             </p>
+            
             <div className="flex gap-3 w-full">
               <Link
                 href={`/dishDetails/${dish?._id}`}
-                className="cursor-pointer flex-1 flex items-center justify-center gap-2 bg-primary text-white px-4 py-2 rounded-full font-semibold text-sm"
+                className="cursor-pointer flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               >
                 <MdOutlineShoppingCart className="text-lg" />
                 Order

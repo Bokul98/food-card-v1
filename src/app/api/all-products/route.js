@@ -68,6 +68,7 @@ export async function GET(request) {
     }
     
     const menu = await menuCollection.find(query).toArray();
+    return NextResponse.json(menu);
     console.log('Query:', query);
     console.log('Found items:', menu.length);
     return NextResponse.json(menu);
