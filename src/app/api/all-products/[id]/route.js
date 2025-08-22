@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
     const db = client.db("foodCartUser");
     const menuCollection = db.collection("allMenu");
     
-    const id = params.id;
+    const { id } = params;
     if (!ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
