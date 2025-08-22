@@ -69,7 +69,7 @@ const Navbar = () => {
             {session && (
               <li>
                 <Link
-                  href="/dashboard/add-product"
+                  href="/dashboard"
                   className={`font-semibold transition-all duration-300 hover:text-blue-600 relative ${
                     pathname.startsWith("/dashboard") ? "text-blue-600" : "text-gray-700"
                   }`}
