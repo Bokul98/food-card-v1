@@ -15,7 +15,7 @@ const RegularDish = () => {
       try {
         setLoading(true);
         // Fetch data from your API with the correct query parameter
-        const response = await fetch("/api/menu?display=regular");
+        const response = await fetch("/api/all-products?display=regular");
 
         if (!response.ok) {
           throw new Error("Failed to fetch regular dishes");

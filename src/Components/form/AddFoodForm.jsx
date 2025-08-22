@@ -22,7 +22,7 @@ export default function AddFoodForm() {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/menu", {
+      const response = await fetch("/api/all-products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

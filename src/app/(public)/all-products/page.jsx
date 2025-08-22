@@ -26,7 +26,7 @@ const AllMenuPage = () => {
       setError(null);
       
       try {
-        let apiUrl = '/api/menu';
+        let apiUrl = '/api/all-products';
         
         // Add a query parameter for the selected category
         if (selectedCategory !== 'All') {
