@@ -7,7 +7,8 @@ export async function middleware(request) {
 
   // If user is not logged in and trying to access protected routes
   if (!token) {
-    if (pathname.startsWith('/dashboard') || pathname.startsWith('/products/')) {
+    // Only protect dashboard and product actions, not product viewing
+    if (pathname.startsWith('/dashboard')) {
       const callbackUrl = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
       return NextResponse.redirect(new URL(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`, origin));
     }
@@ -26,7 +27,6 @@ export async function middleware(request) {
 export const config = {
   matcher: [
     '/dashboard/:path*',
-    '/products/:path*',
     '/login',
     '/register'
   ],

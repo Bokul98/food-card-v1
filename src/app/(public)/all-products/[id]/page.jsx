@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 export default function ProductDetails({ params }) {
+  const { data: session } = useSession();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -90,12 +93,36 @@ export default function ProductDetails({ params }) {
               </p>
             </div>
 
-            <div className="border-t border-gray-200 pt-4">
+            {/* Product Meta Information */}
+            <div className="border-t border-gray-200 pt-4 space-y-4">
               <div className="flex items-center text-sm text-gray-500">
                 <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Added on {new Date(product.createdAt).toLocaleDateString()}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 mt-6">
+                {session ? (
+                  // Logged in user sees both buttons
+                  <>
+                    <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                      Add to Cart
+                    </button>
+                    <button className="flex-1 border-2 border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                      Buy Now
+                    </button>
+                  </>
+                ) : (
+                  // Non-logged in user sees login button
+                  <Link 
+                    href={`/login?callbackUrl=/products/${params.id}`}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 text-center"
+                  >
+                    Login to Order
+                  </Link>
+                )}
               </div>
             </div>
           </div>
