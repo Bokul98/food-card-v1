@@ -151,7 +151,7 @@ const Navbar = () => {
               </Link>
               {session && (
                 <Link
-                  href="/dashboard/add-product"
+                  href="/dashboard"
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-200 ${
                     pathname.startsWith("/dashboard")
