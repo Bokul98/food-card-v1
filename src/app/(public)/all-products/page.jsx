@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const AllMenuPage = () => {
   // State for all menu items, categories, and pagination
@@ -134,20 +135,22 @@ const AllMenuPage = () => {
               key={item.id || item._id || idx}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col transition-all duration-300 transform hover:scale-105 border border-gray-100"
             >
-              <div className="relative mb-6">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-48 object-cover rounded-xl"
-                />
-                <div className="absolute top-4 right-4">
-                  <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.682l-1.318-1.364a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
+              <Link href={`/all-products/${item._id}`} className="block">
+                <div className="relative mb-6">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-48 object-cover rounded-xl transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.682l-1.318-1.364a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
 
               <div className="flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -170,16 +173,16 @@ const AllMenuPage = () => {
                   </div>
                 </div>
 
-                <a
-                  href={`/dishDetails/${item._id || item.id}`}
+                <Link
+                  href={`/all-products/${item._id}`}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-center transition-all duration-300 hover:shadow-lg transform hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
-                  Details
-                </a>
+                  View Details
+                </Link>
               </div>
             </div>
           ))}

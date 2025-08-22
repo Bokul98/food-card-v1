@@ -63,7 +63,7 @@ const RegularDish = () => {
         Regular Dishes
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {dishes.map((dish, idx) => (
+        {dishes.slice(0, 6).map((dish, idx) => (
           <div
             key={idx}
             className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col items-center relative transition-all duration-300 transform hover:scale-105 border border-gray-100"
@@ -110,6 +110,19 @@ const RegularDish = () => {
             </div>
           </div>
         ))}
+      </div>
+      
+      {/* View All Button */}
+      <div className="text-center mt-12">
+        <Link
+          href="/all-products"
+          className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+        >
+          View All Products
+          <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </Link>
       </div>
     </section>
   );
