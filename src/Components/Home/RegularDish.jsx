@@ -58,68 +58,73 @@ const RegularDish = () => {
   }
 
   return (
-    <section className="w-full bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 py-16 px-4">
+    <section className="w-full py-20 px-4 bg-[#F9FAFB]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-            Featured Selection
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Regular Dishes
-            </span>
+          <span className="text-blue-600 font-medium tracking-wider uppercase text-sm">
+            Our Menu
+          </span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gray-900">
+            Regular Dishes
           </h2>
+          <div className="mt-4 w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {dishes.slice(0, 6).map((dish) => (
             <div
               key={dish._id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col relative transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group"
+              className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              {/* Image Container */}
-              <div className="relative w-full h-48 mb-6 overflow-hidden rounded-xl">
+              {/* Image Container with Gradient Overlay */}
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={dish.image}
                   alt={dish.name}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <button className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
-                  <FaRegHeart className="text-lg text-red-500 group-hover:text-red-600" />
-                </button>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Quick Actions - Appear on Hover */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <button className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform">
+                    <FaRegHeart className="text-lg text-rose-500" />
+                  </button>
+                  <button className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform">
+                    <MdOutlineShoppingCart className="text-lg text-blue-600" />
+                  </button>
+                </div>
+
+                {/* Rating Badge */}
+                <div className="absolute top-4 left-4 flex items-center bg-white px-2 py-1 rounded-lg shadow-md">
+                  <FaStar className="text-yellow-400 mr-1" />
+                  <span className="text-sm font-semibold">{dish.rating}</span>
+                </div>
               </div>
 
               {/* Content */}
-              <div className="flex-1 flex flex-col">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">{dish.name}</h3>
-                  <div className="flex items-center bg-yellow-50 px-3 py-1 rounded-full">
-                    <FaStar className="text-yellow-400 mr-1" />
-                    <span className="text-sm font-semibold text-gray-700">
-                      {dish.rating}
-                    </span>
-                  </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {dish.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-2">
+                    {dish.desc}
+                  </p>
                 </div>
 
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">{dish.desc}</p>
-
-                <div className="mt-auto space-y-4">
-                  <div className="flex items-center justify-between">
-                    <p className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      ${dish.price}
-                    </p>
-                    <button className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-                      <MdOutlineShoppingCart className="text-xl" />
-                    </button>
-                  </div>
-
+                <div className="flex items-center justify-between">
+                  <p className="text-2xl font-bold text-blue-600">
+                    ${typeof dish.price === 'number' ? dish.price.toFixed(2) : dish.price}
+                  </p>
                   <Link 
                     href={`/all-products/${dish._id}`}
-                    className="block w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02]"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300"
                   >
                     View Details
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </div>
